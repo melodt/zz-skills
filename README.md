@@ -9,6 +9,7 @@
 | [simple-grill-with-docs](skills/simple-grill-with-docs/SKILL.md) | 追问方案并持续更新 Markdown 文档 | 只展开影响当前目标的决策；每轮通常最多三个问题；达到可执行状态后收敛 |
 | [simple-to-spec](skills/simple-to-spec/SKILL.md) | 把已有讨论整理为可实现的 spec | 覆盖已定范围，精简用户故事；按需核查未知事实；默认本地文档 |
 | [simple-to-tickets](skills/simple-to-tickets/SKILL.md) | 把 spec 拆成带验收标准和依赖的任务 | 使用最少必要 tickets；小需求可以只有一个；默认一份任务清单 |
+| [fast-implement](skills/fast-implement/SKILL.md) | 根据功能描述直接快速实现 | 独立运行，无需 spec 或 tickets；不创建或切换分支；最小验证，默认保留工作区改动 |
 | [simple-implement](skills/simple-implement/SKILL.md) | 实现单个任务或有明确边界的改动 | 按影响选择检查，复用有效验证结果，最后统一自查 |
 | [simple-implement-spec](skills/simple-implement-spec/SKILL.md) | 按依赖顺序完成整个 spec | 默认同一分支连续实现，共享验证，最后统一提交 |
 | [simple-pr](skills/simple-pr/SKILL.md) | 撰写或更新 PR 描述 | 优先仓库模板，复用真实验证证据，按需添加图示和风险说明 |
@@ -21,6 +22,7 @@
 在支持 `$skill-name` 调用的工具中，例如：
 
 ```text
+$fast-implement 为搜索框增加清空按钮，按现有交互实现，只做必要验证。
 $simple-grill-with-docs 帮我收敛这个需求，边讨论边更新 docs/search.md。
 $simple-to-spec 根据刚才的讨论完善 docs/search.md。
 $simple-to-tickets 将 docs/search.md 拆成最少必要任务。
@@ -29,13 +31,13 @@ $simple-pr 根据本次改动和已有验证结果起草 PR 描述。
 $simple-retro 复盘当前会话，找出最值得处理的时间开销。
 ```
 
-这些步骤按需选择。需求已经明确时可以直接实现；小改动可使用 `$simple-implement`，无需先写 spec 或拆 tickets。PR 描述和复盘也可单独使用。
+这些步骤按需选择。功能已经明确、希望直接快速落地时可使用 `$fast-implement`，它不依赖其他 skill，无需先写 spec 或拆 tickets。需要最终统一提交的常规实现可使用 `$simple-implement`；多任务交付可使用 `$simple-implement-spec`。PR 描述和复盘也可单独使用。
 
 ## 默认约定
 
 - **范围收敛**：以当前需求和验收标准为准，避免为了完整而补出新功能、额外重构或复杂流程。
 - **文档交付**：优先用户指定路径和已有文档；否则使用 `docs/<topic>.md` 和 `docs/<topic>-tickets.md`。写方案、拆任务本身不启动实现。
-- **连续实现**：默认使用当前分支，按依赖顺序完成任务，最后统一提交。用户或仓库另有要求时遵循相应要求；提交只包含本任务改动。
+- **连续实现**：`simple-implement` 和 `simple-implement-spec` 默认使用当前分支，最后统一提交，提交只包含本任务改动。`fast-implement` 不创建或切换分支、不创建 worktree、不合并分支，默认将改动留在工作区，按用户要求提交。
 - **适量验证**：优先受影响的行为测试和必要检查。验证输入未变化时复用通过结果；修改后重跑受影响检查。明确要求、影响广泛或无法限定影响范围时运行全量测试。
 - **按需编排**：TDD、额外评审、多代理和 worktree 按需求或仓库规则启用，ticket 边界本身不触发分支切换、合并或完整测试。
 - **发布范围**：spec 和 tickets 可直接保存本地，无需配置 issue tracker；外部发布、PR 操作及环境修改遵循用户授权和仓库工作流。
