@@ -5,6 +5,8 @@ description: Implement a spec, ticket, or bounded change with focused validation
 
 Implement the requested work to its acceptance criteria, choosing the simplest adequate solution. Read applicable repository instructions and the relevant implementation before editing. Ask only about unresolved decisions that would materially change the result.
 
+When the user supplies a detailed design along with a spec or tickets, read it as an implementation input. Track its in-scope interaction, functional behavior, and acceptance criteria through implementation and final review; resolve consequential conflicts or blockers before implementing the affected behavior, while continuing independent work where possible.
+
 Use the current branch unless the user or repository requires another. Preserve unrelated changes. Implement directly; use TDD, additional review skills, or subagents when requested or required, rather than as mandatory stages.
 
 ## Validation

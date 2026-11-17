@@ -6,6 +6,7 @@
 
 | Skill | 用途 | 主要调整 |
 | --- | --- | --- |
+| [feature-detail-design](skills/feature-detail-design/SKILL.md) | 根据已有方案独立编写详细设计 | 覆盖页面布局、操作链路、状态和验收标准，明确待确认问题 |
 | [simple-grill-with-docs](skills/simple-grill-with-docs/SKILL.md) | 追问方案并持续更新 Markdown 文档 | 只展开影响当前目标的决策；每轮通常最多三个问题；达到可执行状态后收敛 |
 | [simple-to-spec](skills/simple-to-spec/SKILL.md) | 把已有讨论整理为可实现的 spec | 覆盖已定范围，精简用户故事；按需核查未知事实；默认本地文档 |
 | [simple-to-tickets](skills/simple-to-tickets/SKILL.md) | 把 spec 拆成带验收标准和依赖的任务 | 使用最少必要 tickets；小需求可以只有一个；默认一份任务清单 |
@@ -26,7 +27,8 @@ $fast-implement 为搜索框增加清空按钮，按现有交互实现，只做�
 $simple-grill-with-docs 帮我收敛这个需求，边讨论边更新 docs/search.md。
 $simple-to-spec 根据刚才的讨论完善 docs/search.md。
 $simple-to-tickets 将 docs/search.md 拆成最少必要任务。
-$simple-implement-spec 按 docs/search.md 和 docs/search-tickets.md 完成实现。
+$feature-detail-design 根据 docs/search.md 和 docs/search-tickets.md 编写独立的详细设计文档。
+$simple-implement-spec 按 docs/search.md、docs/search-tickets.md 和详细设计文档完成实现。
 $simple-pr 根据本次改动和已有验证结果起草 PR 描述。
 $simple-retro 复盘当前会话，找出最值得处理的时间开销。
 ```

@@ -3,7 +3,7 @@ name: simple-implement-spec
 description: Implement a complete spec and its dependent tickets on one branch with shared validation. Use when delivering multiple tickets without a branch, worktree, and merge cycle for each ticket.
 ---
 
-Read the spec, acceptance criteria, and available tickets. Treat ticket dependencies as an execution order. If tickets or issue-tracker configuration are absent, derive a small execution checklist from the spec rather than requiring tracker setup.
+Read the spec, acceptance criteria, available tickets, and any detailed design provided for the work. Treat ticket dependencies as an execution order. If tickets or issue-tracker configuration are absent, derive a small execution checklist from the spec and provided detailed design rather than requiring tracker setup.
 
 Read [simple-implement](../simple-implement/SKILL.md) once and apply its implementation, validation, review, and commit policy to the whole spec as one delivery. Use the user- or repository-required branch; otherwise stay on the current branch. Keep the starting revision and pre-existing local changes identifiable so the final review covers only this task.
 
