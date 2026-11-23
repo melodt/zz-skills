@@ -3,7 +3,7 @@ name: fast-implement
 description: Implement a specified feature directly from the user's request with minimal validation and no branch creation. Use when the user wants a fast implementation without a spec or ticket workflow.
 ---
 
-Implement the feature described by the user. This skill is self-contained: use the request and relevant project context directly, without requiring or generating specs, tickets, or issue-tracker setup.
+Implement the feature described by the user. Use the request and relevant project context directly, without requiring or generating specs, tickets, or issue-tracker setup.
 
 ## Implement directly
 
@@ -27,5 +27,7 @@ Run checks explicitly required by the user or repository. Otherwise:
 Fix failures introduced by the change. If validation is blocked by the environment or an unrelated failure, report the specific gap; avoid unrelated repairs or repeated unchanged retries.
 
 ## Deliver
+
+Apply the mandatory [implementation status write-back](../test-case-workflow/references/implementation-status.md) to applicable existing spec, tickets, and test-case documents before reporting or committing, including partial or blocked outcomes. Install `test-case-workflow` as a sibling for this shared rule; if it is unavailable, report the gap and do not claim the required write-back complete. This does not require creating a spec, ticket, or test-case document.
 
 Briefly report what changed, validation actually performed and its outcome, and any unverified behavior or blockers. Leave changes in the working tree by default; commit, push, or open a PR only when requested. Completion means the requested feature is implemented and required checks pass; report incomplete work or blocked verification explicitly.

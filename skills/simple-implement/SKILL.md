@@ -26,4 +26,6 @@ If a necessary check cannot run, report what prevented it and what remains unver
 
 Review the task's final diff against the acceptance criteria and repository standards, including staged and unstaged task changes. Fix concrete defects, missing requirements, and unintended scope; recheck corrected areas without restarting the entire workflow.
 
+Apply the mandatory [implementation status write-back](../test-case-workflow/references/implementation-status.md) to applicable existing spec, tickets, and test-case documents before reporting or committing, including when the work is partial or blocked. Install `test-case-workflow` as a sibling to provide this shared rule; if it is unavailable, report the missing rule and do not claim the required write-back complete.
+
 Commit the task changes together on the chosen branch unless the user or repository specifies otherwise. Stage only changes belonging to this task. Report what changed, checks actually run and their outcomes, and any remaining blockers or verification gaps. Claim completion only when the requested work and required checks are complete.

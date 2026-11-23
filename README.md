@@ -27,7 +27,7 @@
 
 ## 使用方式
 
-将需要的 skill 目录复制到所用工具支持的 skills 目录，并确认工具已发现它们。`simple-implement-spec` 会读取同级的 `simple-implement/SKILL.md`，使用前需同时安装这两个目录并保留相邻结构。
+将需要的 skill 目录复制到所用工具支持的 skills 目录，并确认工具已发现它们。`simple-implement-spec` 会读取同级的 `simple-implement/SKILL.md`，使用前需同时安装这两个目录并保留相邻结构。`simple-implement`、`simple-implement-spec` 和 `fast-implement` 还需同级安装 `test-case-workflow`，以读取共享的实现状态回写规则。
 
 `verified-implement` 和 `verified-implement-spec` 均读取同级的 `test-case-workflow/SKILL.md`，安装任一入口时需同时安装 `test-case-workflow` 并保留相邻结构。它们读取已安装的第三方 `implement` 或 `implement-spec` 并在自有入口中编排，不修改第三方目录；第三方 skill 不可用时会报告衔接缺口。需要在直接调用第三方实现 skill 时也应用门槛的项目，可将 [项目级测试用例规则模板](docs/test-case-agents-template.md) 合并到该项目的 `AGENTS.md`。这些规则是指令，不是技术强制门禁。
 
@@ -66,6 +66,7 @@ $simple-retro 复盘当前会话，找出最值得处理的时间开销。
 - **按需编排**：TDD、额外评审、多代理和 worktree 按需求或仓库规则启用，ticket 边界本身不触发分支切换、合并或完整测试。
 - **发布范围**：spec 和 tickets 可直接保存本地，无需配置 issue tracker；外部发布、PR 操作及环境修改遵循用户授权和仓库工作流。
 - **如实交付**：区分已实现、已验证和未完成内容，保留检查失败及验证缺口。复盘可以得出“没有值得新增的规则”。
+- **状态回写**：实现入口在报告或提交前更新任务涉及的已有 spec、tickets 和测试用例；部分完成或阻塞也如实记录。详细设计不记录任务进度，设计偏差在任务或 spec 及交付报告中说明；外部系统更新遵循授权。
 
 ## 来源与验证
 
