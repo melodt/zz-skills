@@ -21,9 +21,11 @@
 
 ## Traceability matrix
 
-| Source entry | Ticket | Module | Files | Verification | Status |
-|---|---|---|---|---|---|
-| `{{source}}` | `{{ticket_id}}` | `{{module}}` | `{{files}}` | `{{verification}}` | `{{status}}` |
+| Source / design / acceptance ID | Ticket | Case ID / expected result | Module / interface / files | Skeleton / test placeholder | Verification / evidence | Status / gap |
+|---|---|---|---|---|---|---|
+| `{{source}}` | `{{ticket_id}}` | `{{case_and_expected}}` | `{{target}}` | `{{placeholder}}` | `{{verification}}` | `{{status_or_gap}}` |
+
+Enumerate each in-scope design item and applicable case, including unmatched items and cross-ticket scenarios. Record input document versions, excluded scope, unresolved conflicts and the reason for any inapplicable item.
 
 ## File operations
 

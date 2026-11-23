@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | [feature-detail-design](skills/feature-detail-design/SKILL.md) | 根据已有方案独立编写详细设计 | 覆盖页面布局、操作链路、状态和验收标准，明确待确认问题 |
 | [implementation-plan](skills/implementation-plan/SKILL.md) | 根据 spec、tickets 和详细设计编写实施计划 | 明确实施顺序、需求追踪、验证方式和阻塞项 |
-| [code-skeleton](skills/code-skeleton/SKILL.md) | 根据 spec、tickets 和详细设计搭建代码骨架 | 先计划并追踪需求，再按授权生成骨架和记录验证结果 |
+| [code-skeleton](skills/code-skeleton/SKILL.md) | 根据详细设计和测试用例搭建代码骨架 | 逐项追踪设计和用例，先计划再按授权生成，区分骨架检查与功能验收 |
 | [test-case-code-skeleton](skills/test-case-code-skeleton/SKILL.md) | 根据测试用例和设计搭建代码骨架 | 逐条映射用例并区分骨架检查与功能用例通过 |
 | [test-case-workflow](skills/test-case-workflow/SKILL.md) | 生成、维护和执行可追溯的功能测试用例 | 逐条记录结果与证据，全部适用用例通过才算验证完成 |
 | [verified-implement](skills/verified-implement/SKILL.md) | 按测试用例完成单项实现 | 衔接第三方 `implement`，验证通过后才进行获授权的完成动作 |
@@ -32,7 +32,7 @@
 
 `verified-implement` 和 `verified-implement-spec` 均读取同级的 `test-case-workflow/SKILL.md`，安装任一入口时需同时安装 `test-case-workflow` 并保留相邻结构。它们读取已安装的第三方 `implement` 或 `implement-spec` 并在自有入口中编排，不修改第三方目录；第三方 skill 不可用时会报告衔接缺口。需要在直接调用第三方实现 skill 时也应用门槛的项目，可将 [项目级测试用例规则模板](docs/test-case-agents-template.md) 合并到该项目的 `AGENTS.md`。这些规则是指令，不是技术强制门禁。
 
-`test-case-code-skeleton` 需要与 `code-skeleton`、`test-case-workflow` 相邻安装，并读取已有的对应功能测试用例文档；默认只规划，明确要求执行时才生成骨架。骨架完成不代表功能测试用例通过。
+`code-skeleton` 需读取已有详细设计和对应功能的测试用例文档；记录用例执行结果时需相邻安装 `test-case-workflow`。`test-case-code-skeleton` 需要与 `code-skeleton`、`test-case-workflow` 相邻安装。两者默认只规划，明确要求执行时才生成骨架；骨架完成不代表功能测试用例通过。
 
 三个 `verified-simple-*` / `verified-fast-*` 入口也需与 `test-case-workflow` 和对应原始 skill 安装在相邻目录；其中 `verified-simple-implement-spec` 还需要 `simple-implement`。`verified-fast-implement` 保留快速直接实现，但正式用例仍需要至少一份 spec、ticket 或详细设计；缺少来源时可继续不依赖来源的实现，但验证及完成动作受阻。
 
@@ -51,7 +51,7 @@ $verified-simple-implement 按测试用例实现 docs/search-tickets.md 中的�
 $verified-simple-implement-spec 按测试用例完成 docs/search.md 及关联任务。
 $verified-fast-implement 按 docs/search.md 的测试用例快速实现搜索功能。
 $implementation-plan 根据 spec、tickets 和详细设计编写实施计划。
-$code-skeleton 根据 spec、tickets 和详细设计规划代码骨架。
+$code-skeleton 根据详细设计、测试用例及关联 tickets 规划代码骨架。
 $test-case-code-skeleton 根据 spec、tickets、详细设计和测试用例规划代码骨架。
 $operation-manual 根据最近的 Git 提交更新 docs/operation-manual/，补齐页面截图并记录待补事项。
 $simple-implement-spec 按 docs/search.md、docs/search-tickets.md 和详细设计文档完成实现。

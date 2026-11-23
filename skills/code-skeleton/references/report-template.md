@@ -20,6 +20,14 @@
 |---|---|---|---|
 | `{{layer}}` | `{{command}}` | pass / fail / skipped | `{{evidence}}` |
 
+## Design and case coverage
+
+| Design / acceptance ID | Ticket | Case ID | Skeleton / test location | Actual case status / evidence | Gap / remaining work |
+|---|---|---|---|---|---|
+| `{{design}}` | `{{ticket}}` | `{{case}}` | `{{location}}` | `{{result}}` | `{{gap}}` |
+
+Report all in-scope design items and applicable cases, including unmapped, blocked and cross-ticket items, as well as excluded scope and input versions. Distinguish skeleton completion from functional verification; an unexecuted case is not passed.
+
 ## Blockers and design gaps
 
 - `{{ticket_id}}`: `{{description}}`
