@@ -1,27 +1,74 @@
-# Functional test case document
+# 功能测试用例文档模板
 
-Adapt the headings to project conventions while retaining the fields and traceability below. Do not copy illustrative data into real cases as fact.
+以本模板的分类表格为用例正文，复杂用例另附详细写法。示例仅说明格式和粒度；实际场景、数据、预期和优先级须依据功能需求确定，不把登录示例当作其他功能的事实。用户明确指定其他格式时遵从用户要求，仍保留覆盖和执行记录。
 
-## Sources and scope
+## 来源与范围
 
-- Feature and original scope; approved current scope and explicitly excluded cases, if any.
-- Each source with location/version, missing or inaccessible sources, and relevant ticket dependencies.
-- Conflicts and unresolved questions, their impact, and the decision or source needed to resolve them.
+记录功能及原始范围、已批准的当前范围和排除项；列出各来源的位置或版本、相关 ticket、缺失或无法读取的来源，以及冲突、影响和待确认事项。
 
-## Coverage
+## 覆盖关系
 
-For each in-scope behavior, role, operation, rule, state, and acceptance criterion, record source location, applicable ticket, case IDs, and uncovered / pending / inapplicable explanation. Identify cross-ticket cases.
+将范围内每项行为、角色、操作、规则、状态和验收标准映射到来源位置、适用 ticket 和用例编号；说明未覆盖、待确认或不适用的原因，并标识跨 ticket 交互。
 
-## Cases
+## 测试用例
 
-Use a stable feature-unique ID such as `TC-<FEATURE>-001` and retain it across updates. For every case record:
+按适用场景分别列出“正常功能测试”“边界测试”“异常场景测试”；根据需求和风险增加权限、状态、集成等分类，不为凑分类虚构用例。每行一个独立场景，编号使用稳定且功能内唯一的 `TC-<FEATURE>-001` 形式，更新时保留原编号。
 
-- Module, title, priority, type, source location and applicable ticket IDs.
-- Prerequisites, environment, test data, ordered actionable steps, and independently observable expected results. Mark unknown business values or expectations 待确认 rather than guessing.
-- Current status: 待确认 / 未执行 / 通过 / 失败 / 阻塞 / 需复验.
-- Actual results, execution time, executor or tool, tested version, and accessible evidence identifying the case and outcome; leave empty until executed.
-- History of failed or blocked attempts, resolutions, reruns, and changes affecting IDs or evidence. Preserve relevant prior records.
+正常功能和异常场景使用以下列，步骤写明具体操作，预期写明可观察结果：
 
-## Summary
+| 用例编号 | 测试场景 | 测试步骤 | 预期结果 | 优先级 |
+| --- | --- | --- | --- | --- |
+| TC-LOGIN-001 | 正确账号密码登录 | 输入正确账号和密码，点击登录 | 登录成功，跳转首页 | P0 |
+| TC-LOGIN-002 | 错误密码登录 | 输入正确账号、错误密码，点击登录 | 提示账号或密码错误 | P0 |
 
-List status counts and case IDs, actual verified scope and version, exclusions, unresolved coverage, failures, blockers, and the resulting completion judgment. Never label an unexecuted case or an entire feature as passed based only on generation.
+边界测试使用以下列，写出具体测试数据和可判定的预期结果：
+
+| 用例编号 | 测试场景 | 测试数据 | 预期结果 | 优先级 |
+| --- | --- | --- | --- | --- |
+| TC-LOGIN-008 | 最短账号长度 | 1 个字符 | 待确认：账号长度规则未提供 | P2 |
+
+异常场景示例：
+
+| 用例编号 | 测试场景 | 测试步骤 | 预期结果 | 优先级 |
+| --- | --- | --- | --- | --- |
+| TC-LOGIN-013 | 网络断开 | 登录时断开网络 | 提示网络异常 | P1 |
+
+所有表格中的步骤、数据和预期须足以区分场景并支持执行和判定；未知业务值或预期标记为“待确认”，不使用“按规则处理”等无法独立判定的结果代替已知规则。边界表中无法从场景和数据明确推知的操作，放在该用例的详情或补充信息中。
+
+### 复杂测试用例的详细写法
+
+对步骤较多、跨系统或需要核验多个独立结果的用例展开详情；简单用例保留在表格中。详情与表格共用编号、场景和优先级，不另建重复用例。按截图的写法列出标题、属性、编号步骤和编号预期结果，例如：
+
+#### TC-LOGIN-001 — P0
+
+**测试标题：** 使用正确账号密码登录
+
+| 属性 | 内容 |
+| --- | --- |
+| 所属模块 | 用户中心 / 身份认证 |
+| 测试类型 | 功能测试 |
+| 前置条件 | 用户已注册且账号状态正常 |
+| 测试环境 | Chrome / Windows |
+| 测试数据 | 已准备的有效测试账号 |
+
+**测试步骤**
+
+1. 打开系统登录页面。
+2. 输入有效测试账号和密码。
+3. 点击登录按钮，等待响应。
+
+**预期结果**
+
+1. 登录接口返回成功。
+2. 页面跳转至系统首页。
+3. 用户可以访问有权限的菜单和接口。
+
+**测试执行结果：** 未执行；实际执行后填写结果与证据。
+
+### 补充信息与执行记录
+
+对每个用例记录所属模块、测试类型、来源位置、适用 ticket、前置条件、环境和测试数据；表格或详情已有的内容通过编号关联即可，无需重复。为每个用例记录当前状态：待确认、未执行、通过、失败、阻塞或需复验。实际结果、执行时间、执行人或工具、被测版本及可访问的证据在执行后填写，保留失败或阻塞的尝试、解决和重测历史，以及影响编号或证据的变更。不得记录真实凭据或令牌。
+
+## 汇总
+
+列出各状态数量及用例编号、实际验证范围和版本、排除项、覆盖缺口、失败和阻塞，以及完成结论。仅生成用例不代表验证通过。
